@@ -11,7 +11,7 @@ for index, ch in enumerate(upperclearText):
 
 	clearAsciiCharacter =  ord(ch)
 
-	if (90 - 26) < clearAsciiCharacter <= 90 :
+	if (90 - 26) < clearAsciiCharacter <= 90 : #Only shift letters
 		cipherAsciiCharacter = clearAsciiCharacter + key
 
 		if cipherAsciiCharacter > 90:
@@ -19,14 +19,16 @@ for index, ch in enumerate(upperclearText):
 		
 		cipherCharacter = chr(cipherAsciiCharacter)
 
+		#Break cipher text into blocks
 		if (index - lettersRemoved) % textBlockSize == textBlockSize - 1:
 			cipherCharacter +=" "
 
-	else:
+	else: #Discard other characters
 		cipherCharacter = ""
 		lettersRemoved += 1
 
 	cipherText += cipherCharacter
+
 
 print "*" * 20
 print "CLEAR TEXT"
